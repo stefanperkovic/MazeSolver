@@ -1,7 +1,7 @@
 /**
+ * Stefan Perkovic
  * Creates a Maze made up of MazeCells
- * @author Ms. Namasivayam
- * @version 03/04/2022
+ * @version 04/01/2022
  */
 
 import java.io.File;
@@ -140,13 +140,21 @@ public class Maze {
     }
 
     /**
-     * Determines if the cell is valid to visit.
-     * @param row the int row val
-     * @param col the int col val
-     * @return boolean true/false
+     * Determines if the cell is valid to visit
      */
     public boolean isValidCell(int row, int col) {
-        // TODO: Complete this function
+        /**
+         * Have to stay in the boundaries of the maze
+         */
+        if (row >= numRows || row < 0 || col >= numCols || col < 0){
+            return false;
+        }
+        /**
+         * Can't explore a cell twice
+         */
+        if (mazeGrid[row][col].isExplored() || mazeGrid[row][col].isWall()){
+            return false;
+        }
         return true;
     }
 }
